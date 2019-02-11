@@ -316,13 +316,17 @@ static BOOL MTLValidateAndSetValue(id obj, NSString *key, id value, BOOL forceUp
 	return value;
 }
 
+- (id)isEqualValueForKey:(NSString *)key {
+	return [self valueForKey:key];
+}
+
 - (BOOL)isEqual:(MTLModel *)model {
 	if (self == model) return YES;
 	if (![model isMemberOfClass:self.class]) return NO;
 
 	for (NSString *key in self.class.permanentPropertyKeys) {
-		id selfValue = [self valueForKey:key];
-		id modelValue = [model valueForKey:key];
+		id selfValue = [self isEqualValueForKey:key];
+		id modelValue = [model isEqualValueForKey:key];
 
 		BOOL valuesEqual = ((selfValue == nil && modelValue == nil) || [selfValue isEqual:modelValue]);
 		if (!valuesEqual) return NO;

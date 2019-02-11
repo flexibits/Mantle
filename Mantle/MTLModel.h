@@ -143,6 +143,10 @@ typedef enum : NSUInteger {
 /// Returns the storage behavior for a given key on the receiver.
 + (MTLPropertyStorage)storageBehaviorForPropertyWithKey:(NSString *)propertyKey;
 
+/// Returns the value we want to check for equality for the key
+/// By default this returns valueForKey:, but it can be overridden to customize the value being checked for equality
+- (id)isEqualValueForKey:(NSString *)key;
+
 /// Compares the receiver with another object for equality.
 ///
 /// The default implementation is equivalent to comparing all properties of both
