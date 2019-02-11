@@ -103,6 +103,13 @@ describe(@"with a dictionary of values", ^{
 		expect(copiedModel).to(equal(model));
 		expect(copiedModel).notTo(beIdenticalTo(model));
 	});
+
+	it(@"should not consider -weakModel for equality", ^{
+		MTLTestModel *copiedModel = [model copy];
+		copiedModel.weakModel = nil;
+
+		expect(model).to(equal(copiedModel));
+	});
 });
 
 it(@"should fail to initialize if dictionary validation fails", ^{
@@ -126,6 +133,32 @@ it(@"should merge two models together", ^{
 
 	expect(target.name).to(equal(@"bar"));
 	expect(@(target.count)).to(equal(@8));
+});
+
+it(@"should consider primitive properties permanent", ^{
+	expect(@([MTLStorageBehaviorModel storageBehaviorForPropertyWithKey:@"primitive"])).to(equal(@(MTLPropertyStoragePermanent)));
+});
+
+it(@"should consider object-type assign properties permanent", ^{
+	expect(@([MTLStorageBehaviorModel storageBehaviorForPropertyWithKey:@"assignProperty"])).to(equal(@(MTLPropertyStoragePermanent)));
+});
+
+it(@"should consider object-type strong properties permanent", ^{
+	expect(@([MTLStorageBehaviorModel storageBehaviorForPropertyWithKey:@"strongProperty"])).to(equal(@(MTLPropertyStoragePermanent)));
+});
+
+it(@"should ignore readonly properties without backing ivar", ^{
+	expect(@([MTLStorageBehaviorModel storageBehaviorForPropertyWithKey:@"notIvarBacked"])).to(equal(@(MTLPropertyStorageNone)));
+});
+
+it(@"should consider properties declared in subclass with storage in superclass permanent", ^{
+	expect(@([MTLStorageBehaviorModelSubclass storageBehaviorForPropertyWithKey:@"shadowedInSubclass"])).to(equal(@(MTLPropertyStoragePermanent)));
+	expect(@([MTLStorageBehaviorModelSubclass storageBehaviorForPropertyWithKey:@"declaredInProtocol"])).to(equal(@(MTLPropertyStoragePermanent)));
+});
+
+it(@"should ignore optional protocol properties not implemented", ^{
+	expect(@([MTLOptionalPropertyModel storageBehaviorForPropertyWithKey:@"optionalUnimplementedProperty"])).to(equal(@(MTLPropertyStorageNone)));
+	expect(@([MTLOptionalPropertyModel storageBehaviorForPropertyWithKey:@"optionalImplementedProperty"])).to(equal(@(MTLPropertyStoragePermanent)));
 });
 
 describe(@"merging with model subclasses", ^{
@@ -166,5 +199,6 @@ describe(@"merging with model subclasses", ^{
 		expect(subclass.role).to(equal(@"subclass"));
 	});
 });
+
 
 QuickSpecEnd

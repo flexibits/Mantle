@@ -12,6 +12,8 @@ extern NSString * const MTLTestModelErrorDomain;
 extern const NSInteger MTLTestModelNameTooLong;
 extern const NSInteger MTLTestModelNameMissing;
 
+
+
 @interface MTLEmptyTestModel : MTLModel
 @end
 
@@ -38,7 +40,7 @@ extern const NSInteger MTLTestModelNameMissing;
 // Should not be stored in the dictionary value or JSON.
 @property (nonatomic, copy, readonly) NSString *dynamicName;
 
-// Should not be stored in JSON.
+// Should not be stored in JSON, has MTLPropertyStorageTransitory.
 @property (nonatomic, weak) MTLEmptyTestModel *weakModel;
 
 @end
@@ -62,7 +64,7 @@ extern const NSInteger MTLTestModelNameMissing;
 @interface MTLSubstitutingTestModel : MTLModel <MTLJSONSerializing>
 @end
 
-@interface MTLValidationModel : MTLModel
+@interface MTLValidationModel : MTLModel <MTLJSONSerializing>
 
 // Defaults to nil, which is not considered valid.
 @property (nonatomic, copy) NSString *name;
@@ -73,6 +75,155 @@ extern const NSInteger MTLTestModelNameMissing;
 @interface MTLSelfValidatingModel : MTLValidationModel
 @end
 
-// Maps a non-existant property "name" to the "username" key in JSON.
-@interface MTLIllegalJSONMappingModel : MTLModel <MTLJSONSerializing>
+@interface MTLURLModel : MTLModel <MTLJSONSerializing>
+
+// Defaults to http://github.com.
+@property (nonatomic, strong) NSURL *URL;
+
+@end
+
+@interface MTLURLSubclassModel : MTLURLModel
+
+// Defaults to http://github.com/Mantle/Mantle.
+@property (nonatomic, strong) NSURL *otherURL;
+
+@end
+
+@interface MTLUUIDModel : MTLModel <MTLJSONSerializing>
+
+// Defaults to 4A275FBD-8217-4397-964B-403F4C2B8545
+@property (nonatomic, strong) NSUUID *UUID;
+
+@end
+
+@interface MTLUUIDSubclassModel : MTLUUIDModel
+
+// Defaults to 593246D2-A290-43D5-9070-A299A489AE29
+@property (nonatomic, strong) NSUUID *otherUUID;
+
+@end
+
+// Conforms to MTLJSONSerializing but does not inherit from the MTLModel class.
+@interface MTLConformingModel : NSObject <MTLJSONSerializing>
+
+@property (nonatomic, copy) NSString *name;
+
+@end
+
+@interface MTLStorageBehaviorModel : MTLModel
+
+@property (readonly, nonatomic, assign) BOOL primitive;
+
+@property (readonly, nonatomic, assign) id assignProperty;
+@property (readonly, nonatomic, weak) id weakProperty;
+@property (readonly, nonatomic, strong) id strongProperty;
+
+@property (readonly, nonatomic, strong) id shadowedInSubclass;
+@property (readonly, nonatomic, strong) id declaredInProtocol;
+
+@end
+
+@protocol MTLDateProtocol <NSObject>
+
+@property (readonly, nonatomic, strong) id declaredInProtocol;
+
+@end
+
+@interface MTLStorageBehaviorModelSubclass : MTLStorageBehaviorModel <MTLDateProtocol>
+
+@property (readonly, nonatomic, strong) id shadowedInSubclass;
+
+@end
+
+@interface MTLBoolModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, assign) BOOL flag;
+
+@end
+
+@interface MTLStringModel : MTLModel <MTLJSONSerializing>
+
+@property (readwrite, nonatomic, copy) NSString *string;
+
+@end
+
+@interface MTLIDModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, strong) id anyObject;
+
+@end
+
+@interface MTLNonPropertyModel : MTLModel <MTLJSONSerializing>
+
+- (NSURL *)homepage;
+
+@end
+
+@interface MTLMultiKeypathModel : MTLModel <MTLJSONSerializing>
+
+// This property is associated with the "location" and "length" keys in JSON.
+@property (readonly, nonatomic, assign) NSRange range;
+
+// This property is associated with the "nested.location" and "nested.length"
+// keys in JSON.
+@property (readonly, nonatomic, assign) NSRange nestedRange;
+
+@end
+
+@interface MTLClassClusterModel : MTLModel <MTLJSONSerializing>
+
+@property (readonly, nonatomic, copy) NSString *flavor;
+
+@end
+
+@interface MTLChocolateClassClusterModel : MTLClassClusterModel
+
+// Associated with the "chocolate_bitterness" JSON key and transformed to a
+// string.
+@property (readwrite, nonatomic, assign) NSUInteger bitterness;
+
+@end
+
+@interface MTLStrawberryClassClusterModel : MTLClassClusterModel
+
+// Associated with the "strawberry_freshness" JSON key.
+@property (readwrite, nonatomic, assign) NSUInteger freshness;
+
+@end
+
+
+@protocol MTLOptionalPropertyProtocol
+
+@optional
+@property (readwrite, nonatomic, strong) id optionalUnimplementedProperty;
+@property (readwrite, nonatomic, strong) id optionalImplementedProperty;
+
+@end
+
+@interface MTLOptionalPropertyModel : MTLModel <MTLOptionalPropertyProtocol>
+
+@property (readwrite, nonatomic, strong) id optionalImplementedProperty;
+
+@end
+
+
+@interface MTLRecursiveUserModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSArray *groups;
+
+@end
+
+@interface MTLRecursiveGroupModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, readonly) MTLRecursiveUserModel *owner;
+@property (nonatomic, readonly) NSArray *users;
+@end
+
+@interface MTLPropertyDefaultAdapterModel : MTLModel<MTLJSONSerializing>
+
+@property (readwrite, nonatomic, strong) MTLEmptyTestModel *nonConformingMTLJSONSerializingProperty;
+@property (readwrite, nonatomic, strong) MTLTestModel *conformingMTLJSONSerializingProperty;
+@property (readwrite, nonatomic, strong) NSString *property;
+
 @end
