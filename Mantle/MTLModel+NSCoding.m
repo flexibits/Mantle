@@ -17,6 +17,9 @@ static NSString * const MTLModelVersionKey = @"MTLModelVersion";
 // Used to cache the reflection performed in +allowedSecureCodingClassesByPropertyKey.
 static void *MTLModelCachedAllowedClassesKey = &MTLModelCachedAllowedClassesKey;
 
+// Used to cache the check performed in verifyAllowedClassesByPropertyKey.
+static void *MTLModelCachedVerifyAllowedClassesKey = &MTLModelCachedVerifyAllowedClassesKey;
+
 // Returns whether the given NSCoder requires secure coding.
 static BOOL coderRequiresSecureCoding(NSCoder *coder) {
 	SEL requiresSecureCodingSelector = @selector(requiresSecureCoding);
@@ -42,6 +45,11 @@ static NSSet *encodablePropertyKeysForClass(Class modelClass) {
 // Verifies that all of the specified class' encodable property keys are present
 // in +allowedSecureCodingClassesByPropertyKey, and throws an exception if not.
 static void verifyAllowedClassesByPropertyKey(Class modelClass) {
+	NSNumber *cachedVerifyAllowedClassses = objc_getAssociatedObject(modelClass, MTLModelCachedVerifyAllowedClassesKey);
+	if (cachedVerifyAllowedClassses != nil) {
+		return;
+	}
+
 	NSDictionary *allowedClasses = [modelClass allowedSecureCodingClassesByPropertyKey];
 
 	NSMutableSet *specifiedPropertyKeys = [[NSMutableSet alloc] initWithArray:allowedClasses.allKeys];
@@ -50,6 +58,10 @@ static void verifyAllowedClassesByPropertyKey(Class modelClass) {
 	if (specifiedPropertyKeys.count > 0) {
 		[NSException raise:NSInvalidArgumentException format:@"Cannot encode %@ securely, because keys are missing from +allowedSecureCodingClassesByPropertyKey: %@", modelClass, specifiedPropertyKeys];
 	}
+
+	// It doesn't really matter if we replace another thread's work, since we do
+	// it atomically and the result should be the same.
+	objc_setAssociatedObject(modelClass, MTLModelCachedVerifyAllowedClassesKey, @YES, OBJC_ASSOCIATION_RETAIN);
 }
 
 @implementation MTLModel (NSCoding)
