@@ -192,7 +192,11 @@ NSString * const MTLJSONAdapterThrownExceptionErrorKey = @"MTLJSONAdapterThrownE
 	__block BOOL success = YES;
 	__block NSError *tmpError = nil;
 
+#if GNUSTEP
+	[dictionaryValue enumerateKeysAndObjectsUsingBlock:(GSKeysAndObjectsEnumeratorBlock)^(NSString *propertyKey, id value, BOOL *stop) {
+#else
 	[dictionaryValue enumerateKeysAndObjectsUsingBlock:^(NSString *propertyKey, id value, BOOL *stop) {
+#endif
 		id JSONKeyPaths = self.JSONKeyPathsByPropertyKey[propertyKey];
 
 		if (JSONKeyPaths == nil) return;
