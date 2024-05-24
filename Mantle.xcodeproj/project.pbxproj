@@ -959,7 +959,7 @@
 			};
 			buildConfigurationList = D042FC3515F72B23004E8054 /* Build configuration list for PBXProject "Mantle" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -1445,6 +1445,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = $PRODUCT_NAME/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				VALID_ARCHS = "arm64 arm64e x86_64";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1458,6 +1459,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = $PRODUCT_NAME/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				VALID_ARCHS = "arm64 arm64e x86_64";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1523,6 +1525,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = $PRODUCT_NAME/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				VALID_ARCHS = "arm64 arm64e x86_64";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Profile;
@@ -1569,6 +1572,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = $PRODUCT_NAME/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				VALID_ARCHS = "arm64 arm64e x86_64";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Test;
@@ -1602,7 +1606,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Mantle/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1618,7 +1627,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Mantle/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1634,7 +1648,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Mantle/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1650,7 +1669,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Mantle/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mantle.$(PRODUCT_NAME:rfc1034identifier)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
