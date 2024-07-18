@@ -37,7 +37,9 @@ static BOOL coderRequiresSecureCoding(NSCoder *coder) {
 // Returns all of the given class' encodable property keys (those that will not
 // be excluded from archives).
 static NSSet *encodablePropertyKeysForClass(Class modelClass) {
-	return [[modelClass encodingBehaviorsByPropertyKey] keysOfEntriesPassingTest:^ BOOL (NSString *propertyKey, NSNumber *behavior, BOOL *stop) {
+	NSDictionary<NSString *, NSNumber *> *encodingBehavioursByProperty = [modelClass encodingBehaviorsByPropertyKey];
+
+	return [encodingBehavioursByProperty keysOfEntriesPassingTest:^ BOOL (NSString *propertyKey, NSNumber *behavior, BOOL *stop) {
 		return behavior.unsignedIntegerValue != MTLModelEncodingBehaviorExcluded;
 	}];
 }
@@ -99,7 +101,8 @@ static void verifyAllowedClassesByPropertyKey(Class modelClass) {
 	if (cachedClasses != nil) return cachedClasses;
 
 	// Get all property keys that could potentially be encoded.
-	NSSet *propertyKeys = [self.encodingBehaviorsByPropertyKey keysOfEntriesPassingTest:^ BOOL (NSString *propertyKey, NSNumber *behavior, BOOL *stop) {
+	NSDictionary<NSString *, NSNumber *> *encodingBehavioursByProperty = [self encodingBehaviorsByPropertyKey];
+	NSSet *propertyKeys = [encodingBehavioursByProperty keysOfEntriesPassingTest:^ BOOL (NSString *propertyKey, NSNumber *behavior, BOOL *stop) {
 		return behavior.unsignedIntegerValue != MTLModelEncodingBehaviorExcluded;
 	}];
 
@@ -222,7 +225,9 @@ static void verifyAllowedClassesByPropertyKey(Class modelClass) {
 	[coder encodeObject:@(self.class.modelVersion) forKey:MTLModelVersionKey];
 
 	NSDictionary *encodingBehaviors = self.class.encodingBehaviorsByPropertyKey;
-	[self.dictionaryValue enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
+	NSDictionary<NSString *, id> *dictionaryValue = [self dictionaryValue];
+
+	[dictionaryValue enumerateKeysAndObjectsUsingBlock:^(NSString *key, id value, BOOL *stop) {
 		@try {
 			// Skip nil values.
 			if ([value isEqual:NSNull.null]) return;
