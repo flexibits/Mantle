@@ -1802,7 +1802,7 @@
 				54B45F3C23D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		CDEEABCC1D33FC5100240A4B /* Build configuration list for PBXNativeTarget "Mantle-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1813,7 +1813,7 @@
 				54B45F3A23D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		CDEEABF51D33FC7900240A4B /* Build configuration list for PBXNativeTarget "Mantle-tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1824,7 +1824,7 @@
 				54B45F3B23D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D042FC3515F72B23004E8054 /* Build configuration list for PBXProject "Mantle" */ = {
 			isa = XCConfigurationList;
@@ -1835,7 +1835,7 @@
 				54B45F3523D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D042FC6615F72B23004E8054 /* Build configuration list for PBXNativeTarget "Mantle-Mac" */ = {
 			isa = XCConfigurationList;
@@ -1846,7 +1846,7 @@
 				54B45F3623D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D042FC6915F72B23004E8054 /* Build configuration list for PBXNativeTarget "Mantle-MacTests" */ = {
 			isa = XCConfigurationList;
@@ -1857,7 +1857,7 @@
 				54B45F3723D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D0E9C36A19F6DB38000D427D /* Build configuration list for PBXNativeTarget "Mantle-iOS" */ = {
 			isa = XCConfigurationList;
@@ -1868,7 +1868,7 @@
 				54B45F3823D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D0E9C36F19F6DB38000D427D /* Build configuration list for PBXNativeTarget "Mantle-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1879,7 +1879,7 @@
 				54B45F3923D4BB92007534E1 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
