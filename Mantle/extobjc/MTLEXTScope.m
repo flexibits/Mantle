@@ -7,7 +7,7 @@
 //  Released under the MIT license.
 //
 
-#import "MTLEXTScope.h"
+#import "include/MTLEXTScope.h"
 
 void mtl_executeCleanupBlock (__strong mtl_cleanupBlock_t *block) {
     (*block)();

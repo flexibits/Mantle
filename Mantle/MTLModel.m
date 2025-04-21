@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "MTLEXTRuntimeExtensions.h"
-#import "MTLEXTScope.h"
-#import "MTLModel.h"
+#import "extobjc/include/MTLEXTRuntimeExtensions.h"
+#import "extobjc/include/MTLEXTScope.h"
+#import "include/MTLModel.h"
 #import "MTLReflection.h"
 #import "NSError+MTLModelException.h"
 #import <objc/runtime.h>

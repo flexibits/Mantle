@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-#import "MTLTransformerErrorHandling.h"
+#import "include/MTLTransformerErrorHandling.h"
 
 NSString * const MTLTransformerErrorHandlingErrorDomain = @"MTLTransformerErrorHandlingErrorDomain";
 

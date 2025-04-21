@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-#import "NSValueTransformer+MTLInversionAdditions.h"
-#import "MTLTransformerErrorHandling.h"
-#import "MTLValueTransformer.h"
+#import "include/NSValueTransformer+MTLInversionAdditions.h"
+#import "include/MTLTransformerErrorHandling.h"
+#import "include/MTLValueTransformer.h"
 
 @implementation NSValueTransformer (MTLInversionAdditions)
 

@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
-#import "MTLJSONAdapter.h"
-#import "MTLModel.h"
-#import "MTLValueTransformer.h"
+#import "include/NSValueTransformer+MTLPredefinedTransformerAdditions.h"
+#import "include/MTLJSONAdapter.h"
+#import "include/MTLModel.h"
+#import "include/MTLValueTransformer.h"
 
 NSString * const MTLURLValueTransformerName = @"MTLURLValueTransformerName";
 NSString * const MTLUUIDValueTransformerName = @"MTLUUIDValueTransformerName";

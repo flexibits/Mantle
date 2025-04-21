@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "NSDictionary+MTLManipulationAdditions.h"
+#import "include/NSDictionary+MTLManipulationAdditions.h"
 
 @implementation NSDictionary (MTLManipulationAdditions)
 

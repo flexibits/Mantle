@@ -10,14 +10,14 @@
 
 #import "NSDictionary+MTLJSONKeyPath.h"
 
-#import "MTLEXTRuntimeExtensions.h"
-#import "MTLEXTScope.h"
-#import "MTLJSONAdapter.h"
-#import "MTLModel.h"
-#import "MTLTransformerErrorHandling.h"
+#import "extobjc/include/MTLEXTRuntimeExtensions.h"
+#import "extobjc/include/MTLEXTScope.h"
+#import "include/MTLJSONAdapter.h"
+#import "include/MTLModel.h"
+#import "include/MTLTransformerErrorHandling.h"
 #import "MTLReflection.h"
-#import "NSValueTransformer+MTLPredefinedTransformerAdditions.h"
-#import "MTLValueTransformer.h"
+#import "include/NSValueTransformer+MTLPredefinedTransformerAdditions.h"
+#import "include/MTLValueTransformer.h"
 
 NSString * const MTLJSONAdapterErrorDomain = @"MTLJSONAdapterErrorDomain";
 const NSInteger MTLJSONAdapterErrorNoClassFound = 2;

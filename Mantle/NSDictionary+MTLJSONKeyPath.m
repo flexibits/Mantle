@@ -8,7 +8,7 @@
 
 #import "NSDictionary+MTLJSONKeyPath.h"
 
-#import "MTLJSONAdapter.h"
+#import "include/MTLJSONAdapter.h"
 
 @implementation NSDictionary (MTLJSONKeyPath)
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-#import "MTLEXTRuntimeExtensions.h"
-#import "MTLEXTScope.h"
-#import "MTLModel+NSCoding.h"
+#import "extobjc/include/MTLEXTRuntimeExtensions.h"
+#import "extobjc/include/MTLEXTScope.h"
+#import "include/MTLModel+NSCoding.h"
 #import "MTLReflection.h"
 
 // Used in archives to store the modelVersion of the archived instance.

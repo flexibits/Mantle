@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-#import "MTLModel.h"
+#import "include/MTLModel.h"
 
 #import "NSError+MTLModelException.h"
 

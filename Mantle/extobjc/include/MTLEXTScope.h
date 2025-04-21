@@ -7,7 +7,7 @@
 //  Released under the MIT license.
 //
 
-#import <MTLMetamacros.h>
+#import <Mantle/extobjc/include/MTLMetamacros.h>
 
 /**
  * \@onExit defines some code to be executed when the current scope exits. The

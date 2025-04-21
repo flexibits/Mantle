@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "NSArray+MTLManipulationAdditions.h"
+#import "include/NSArray+MTLManipulationAdditions.h"
 
 @interface NSArray (MTLDeclarations)
 
